@@ -22,7 +22,7 @@ def process_professor_data(df, quantidade_respostas, start_col, end_col, profess
     return df_selected
 
 # Interface do Streamlit
-st.title("Processador de Avaliação de Professores (EAD)")
+st.title("Processador de Avaliação de Professores (PRESENCIAL)")
 
 st.markdown("""
     <div style="border: 1px solid #FF5733; padding: 15px; background-color: #FFE6E6; border-radius: 10px;">
@@ -40,7 +40,7 @@ ano_semestre = st.text_input("Identificação da avaliação (por exemplo: 2024-
 curso_name = st.selectbox("Selecione o Curso", cursos)
 periodo_name = st.selectbox("Selecione o Período", [f"{i}º" for i in range(1, 11)])
 
-professor_block_size = st.number_input("Tamanho do bloco de colunas de dados de cada professor", value=13)
+professor_block_size = st.number_input("Tamanho do bloco de colunas de dados de cada professor", value=12)
 start_block_size = st.number_input("Quantas colunas existem antes de começar a coluna de dados", value=10)
 end_block_size = st.number_input("Quantidade de colunas que devem ser desprezadas no final", value=3)
 quantidade_respostas = st.number_input("Quantidade de respondentes (linhas) por professor", value=18)
@@ -104,12 +104,12 @@ if uploaded_file is not None:
     nova_ordem =[
        'CURSO','PERIODO','DISCIPLINA','PROFESSOR (A-Z)', 
        'Importância da disciplina',
-       'Apresentação do plano de ensino da disciplina',
-       'Cumprimento plano de ensino da disciplina',
-       'Domínio do conteúdo da disciplina', 
-       'Assiduidade', 'Pontualidade',
-       'Qualidade das aulas “ao vivo”',
-       'Compatibilidade das avaliações com o conteúdo ministrado em sala de aula',
+       'Apresentação do plano de ensino da disciplina',	
+       'Cumprimento plano de ensino da disciplina',	
+       'Domínio do conteúdo da disciplina',
+       'Assiduidade',	
+       'Pontualidade',	
+       'Compatibilidade das avaliações com o conteúdo ministrado em sala de aula',	
        'Uso e indicação de bibliografias constantes no plano de ensino',
        'Disponibilidade do professor para atendimento ao aluno',
        'Satisfação geral com a disciplina',
@@ -133,7 +133,7 @@ if uploaded_file is not None:
     csv_data = to_csv(final_df)
 
     # Gera o nome do arquivo baseado no curso e no período
-    file_name = f"{ano_semestre}_{curso_name.replace(' ', '_')}_periodo_{periodo_name.replace('º', '')}.csv"
+    file_name = f"{ano_semestre}_{curso_name.replace(' ', '_')}_periodo_{periodo_name.replace('º', '')}_PRESENCIAL.csv"
 
     # Botão para download do arquivo CSV
     st.download_button(

@@ -13,14 +13,18 @@ def executar_arquivo(caminho):
 def pagina_cpa():
     executar_arquivo('cpa.py')
 
+def pagina_presencial():
+    executar_arquivo('presencial.py')
+
 def pagina_lote():
     executar_arquivo('lote.py')
 
 
 # Dicionário de páginas
 paginas = {
-	"Processo Arquivo Individual": pagina_cpa,
-    "Processa Arquivos em Lote": pagina_lote,
+	"Arquivo Individual (EaD)": pagina_cpa,
+    "Arquivo Individual (PRESENCIAL)": pagina_presencial,
+    "Arquivos em Lote (EaD)": pagina_lote,
     
 }
 
